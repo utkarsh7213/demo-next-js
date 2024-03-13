@@ -13,7 +13,7 @@ const Home = ({ message }) => {
 
 export async function getServerSideProps() {
   // Fetch data from the API route
-  const response = await fetch('http://localhost:3000/api/hello');
+  const response = await fetch('https://demo-next-js-eight.vercel.app/api/hello');
   const data = await response.json();
 
   return {
