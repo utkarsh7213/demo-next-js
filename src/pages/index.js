@@ -1,30 +1,26 @@
-// pages/demo.js
+// pages/index.js
 
 import React from 'react';
 
-const Demo = ({ data }) => {
+const Home = ({ message }) => {
   return (
     <div>
-      <h1>Demo Component</h1>
-      <ul>
-        {data.map(item => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
+      <h1>Server-side Rendered Data</h1>
+      <p>{message}</p>
     </div>
   );
 };
 
 export async function getServerSideProps() {
-  // Fetch data from a demo API
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  // Fetch data from the API route
+  const response = await fetch('http://localhost:3000/api/hello');
   const data = await response.json();
 
   return {
     props: {
-      data,
-    },
+      message: data.message
+    }
   };
 }
 
-export default Demo;
+export default Home;
